@@ -1,0 +1,33 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+div#navigationBar{
+    width: 100%;
+    height: 170px;
+    background-color: antiquewhite;
+}
+div.mainContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    justify-content: flex-start;
+    align-items: center;
+}
+div.row{
+    display: flex;
+    flex-direction: row;
+    column-gap: 70px;
+}
+div.product{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: flex-start;
+    background-color: aquamarine;
+    width: 300px;
+    height: 400px;
+}
