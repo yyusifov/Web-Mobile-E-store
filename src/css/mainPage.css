@@ -16,11 +16,13 @@ div.mainContent{
     row-gap: 25px;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 50px;
 }
 div.row{
     display: flex;
     flex-direction: row;
-    column-gap: 70px;
+    column-gap: 110px;
+    width: 80%;
 }
 div.product{
     display: flex;
@@ -30,4 +32,26 @@ div.product{
     background-color: aquamarine;
     width: 300px;
     height: 400px;
+}
+div.imageFrame{
+    display: flex;
+    flex-direction: row;
+}
+img{
+    width: 100%;
+    height: 220px;
+}
+div.shortInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6px;
+}
+span{
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
