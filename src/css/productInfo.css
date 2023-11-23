@@ -1,0 +1,40 @@
+body,html{
+    margin: 0;
+}
+div.mainContent{
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.productGallery{
+    position: relative;
+    width: 400px;
+    height: 600px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: #F9F9F9;
+}
+
+div.productImageContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+div.directionofimagechoice{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+div.iconContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 4px #33333329;
+    background-color: #fff;
+    border-radius: 100%;
+}
