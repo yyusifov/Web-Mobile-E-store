@@ -22,11 +22,27 @@ div.productImageContainer{
     flex-direction: column;
 }
 
+img.productImage{
+    border-radius: 10px;
+}
+
 div.directionofimagechoice{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+div#leftChoice{
+    position: absolute;
+    left:10px;
+    bottom: 300px;
+}
+
+div#rightChoice{
+    position: absolute;
+    right:10px;
+    bottom: 300px;
 }
 
 div.iconContainer{
@@ -37,4 +53,5 @@ div.iconContainer{
     box-shadow: 0 4px 4px #33333329;
     background-color: #fff;
     border-radius: 100%;
+    padding: 6px;
 }

@@ -8,19 +8,20 @@
         <div class="mainContent">
         <div class="productGallery">
             <div class="productImageContainer">
-            <img src="../src/assets/1_org_zoom.webp">
+            <img class="productImage" id="imageofproduct" src="../src/assets/1_org_zoom (1).webp">
             </div>
-            <div class="directionofimagechoice">
-                <div class="iconContainer">
+            <div id="leftChoice" class="directionofimagechoice">
+                <div onclick="imageFromLeft()" class="iconContainer">
                 <img src="../src/assets/left.svg">
                 </div>
             </div>
-            <div class="directionofimagechoice">
-                <div class="iconContainer">
+            <div id="rightChoice" class="directionofimagechoice">
+                <div onclick="imageFromRight()" class="iconContainer">
                 <img src="../src/assets/right.svg">
                 </div>
             </div>
         </div>
         </div>
+        <script src="../src/js/detailedInfo.js"></script>
     </body>
 </html>
