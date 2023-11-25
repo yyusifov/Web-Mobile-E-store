@@ -1,3 +1,4 @@
+export const productId = 0;
 fetch("https://dummyjson.com/products").then(response =>{
     if(response.ok == false){
         throw new Error("status code is not in wanted range");
@@ -55,6 +56,10 @@ fetch("https://dummyjson.com/products").then(response =>{
         shortInfo.appendChild(productDiscount);
         shortInfo.appendChild(stockofproduct);
         productContainer.appendChild(row);
+
+        product.addEventListener("click", function(){
+            productId = data.products[i].id;
+        });
     }
 }).catch(error => {
     console.error(error);
