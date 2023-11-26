@@ -1,28 +1,24 @@
-fetch().then(response =>{
-    if(response == false){
-        throw new Error("status code is not in wanted range");
-    }
-    return response.json();
-}).then(data =>{
+const getProduct = localStorage.getItem("productObject");
+const getProductId = localStorage.getItem("productId");
 
-}).catch(error=>{
-    
-});
-var productImages = ["../src/assets/1_org_zoom (1).webp","../src/assets/1_org_zoom (2).webp","../src/assets/1_org_zoom (3).webp","../src/assets/1_org_zoom (4).webp","../src/assets/1_org_zoom (5).webp"];
+
+var product = JSON.parse(getProduct);
+
+document.getElementById("imageofproduct").src = product.images[0];
 
 var cnt = 0;
 function imageFromLeft(){
     if(cnt > 0){
         cnt--;
     }
-    console.log(productImages[cnt]);
-    document.getElementById("imageofproduct").src = productImages[cnt];
+    console.log(product[cnt]);
+    document.getElementById("imageofproduct").src = product.images[cnt];
 }
 
 function imageFromRight(){
-    if(cnt < productImages.length - 1){
+    if(cnt < product.images.length - 1){
         cnt++;
     }
-    console.log(productImages[cnt]);
-    document.getElementById("imageofproduct").src = productImages[cnt];
+    console.log(product.images[cnt]);
+    document.getElementById("imageofproduct").src = product.images[cnt];
 }

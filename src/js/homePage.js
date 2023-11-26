@@ -1,4 +1,3 @@
-export const productId = 0;
 fetch("https://dummyjson.com/products").then(response =>{
     if(response.ok == false){
         throw new Error("status code is not in wanted range");
@@ -43,11 +42,16 @@ fetch("https://dummyjson.com/products").then(response =>{
         categoryofproduct.classList.add("categoryofproduct");
         categoryofproduct.textContent = data.products[i].category;
 
+        const linktonexthtml = document.createElement("a");
+        linktonexthtml.classList.add("nextHtml");
+        linktonexthtml.href = "productInfo.html";
+
         const stockofproduct = document.createElement("span");
         stockofproduct.classList.add("stockofproduct");
         stockofproduct.textContent = data.products[i].stock;
 
-        row.appendChild(product);
+        row.appendChild(linktonexthtml);
+        linktonexthtml.appendChild(product);
         product.appendChild(imageFrame);
         product.appendChild(shortInfo);
         imageFrame.appendChild(productImage);
@@ -58,7 +62,10 @@ fetch("https://dummyjson.com/products").then(response =>{
         productContainer.appendChild(row);
 
         product.addEventListener("click", function(){
-            productId = data.products[i].id;
+            const productId = data.products[i].id;
+
+            localStorage.setItem("productObject",JSON.stringify(data.products[i]));
+            localStorage.setItem("productId",productId);
         });
     }
 }).catch(error => {

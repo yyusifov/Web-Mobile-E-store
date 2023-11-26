@@ -55,3 +55,7 @@ span{
     font-weight: 400;
     line-height: normal;
 }
+a.nextHtml{
+    display: flex;
+    flex-direction: column;
+}
