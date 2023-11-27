@@ -3,10 +3,39 @@ body,html{
     height: 100%;
     margin: 0;
 }
-div#navigationBar{
+div.navigationBar{
     width: 100%;
     height: 170px;
     background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    justify-content: center;
+}
+div.searchFrame{ 
+
+    position: relative;
+    width: 45%;
+    height: 50px;
+    background-color: azure;
+    border: 0.5px solid black;
+}
+div.searchContent{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+input#searchKeyword{
+    position: absolute;
+    width: 96.5%;
+    height: 80%;
+    border: 0;
+    outline: 0;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    padding-right: 15px;
 }
 div.mainContent{
     width: 100%;
