@@ -16,7 +16,7 @@ div.searchFrame{
     position: relative;
     width: 45%;
     height: 2.5vw;
-    background-color: azure;
+    background-color: white;
     border: 0.5px solid black;
 }
 div.searchContent{
@@ -24,9 +24,11 @@ div.searchContent{
     flex-direction: row;
     width: 100%;
     height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
 }
 input#searchKeyword{
-    position: absolute;
     width: 96.5%;
     height: 80%;
     border: 0;
@@ -35,6 +37,11 @@ input#searchKeyword{
     padding-left: 0.75vw;
     padding-bottom: 0.25vw;
     padding-right: 0.75vw;
+    font-family: Lalezar;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 div.mainContent{
     width: 100%;
@@ -86,4 +93,11 @@ span{
 a.nextHtml{
     display: flex;
     flex-direction: column;
+}
+img#searchIcon{
+    width: 5%;
+    height: 1vw;
+}
+img#searchIcon:hover{
+    cursor: pointer;
 }
