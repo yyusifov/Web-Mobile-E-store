@@ -71,3 +71,7 @@ fetch("https://dummyjson.com/products").then(response =>{
 }).catch(error => {
     console.error(error);
 })
+
+function searchItem(){
+    
+}
