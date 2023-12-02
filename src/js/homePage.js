@@ -13,6 +13,9 @@ fetch("https://dummyjson.com/products").then(response =>{
     return response.json();
 }).then(data =>{
 
+    if(itemProperty.trim().length == 0){
+        itemProperty = "allItems";
+    }
     /*It will determine how many items will be inserted. The main purpose for me to use it is to
     make sure that I create correct number of row. If I do not specify it 1 or maybe 2 elements will
     pop up in a row. It will have unpleasant view.*/
@@ -109,5 +112,5 @@ fetch("https://dummyjson.com/products").then(response =>{
 
 function searchItem(){
     itemProperty = document.getElementById("searchKeyword").value;
-    showItems(itemProperty);
+    showItems(itemProperty.trim());
 }
