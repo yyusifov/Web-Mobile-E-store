@@ -1,3 +1,6 @@
+var categoryList = [];
+
+var itemList = [];
 //Default value
 var itemProperty = "allItems";
 //When the whole page is loaded, we can call showItems function to demonstrate items
@@ -22,14 +25,16 @@ fetch("https://dummyjson.com/products").then(response =>{
 
     //If contains any element, we are gonna remove it to reload for every search
     var container = document.querySelectorAll(".row");
-    if(container.childNodes == undefined){
+    var navBarContainer = document.querySelectorAll(".categoryFilter");
+
+    if(container.length != 0){
         container.forEach(function(element){
             element.remove();
         });
     }
     let cnt = 0;
     const productContainer = document.getElementById("productContainer");
-
+    const filterContainer = document.getElementById("categoryFilter");
     for(let i = 0; i < data.products.length; i++){
 
         
@@ -38,7 +43,7 @@ fetch("https://dummyjson.com/products").then(response =>{
             row.classList.add("row");
         }
 
-        if(itemProperty == "allItems" || data.products[i].title == itemProperty || data.products[i].description == itemProperty || data.products[i].category == itemProperty){
+        if(itemProperty == "allItems" || data.products[i].title.toLowerCase() == itemProperty.toLowerCase() || data.products[i].description.toLowerCase() == itemProperty.toLowerCase() || data.products[i].category.toLowerCase() == itemProperty.toLowerCase()){
             cnt++;
             const product = document.createElement("div");
             product.classList.add("product");
@@ -77,6 +82,19 @@ fetch("https://dummyjson.com/products").then(response =>{
             stockofproduct.classList.add("stockofproduct");
             stockofproduct.textContent = data.products[i].stock;
 
+
+
+            //Filter containera bax
+            if(!categoryList.includes(data.products[i].category)){
+                const categoryElement = document.createElement("option");
+                categoryElement.value = data.products[i].category;
+                categoryElement.textContent = data.products[i].category;
+
+                categoryList.push(data.products[i].category);
+                filterContainer.appendChild(categoryElement);
+
+            }
+
             row.appendChild(linktonexthtml);
 
             linktonexthtml.appendChild(product);
@@ -96,14 +114,20 @@ fetch("https://dummyjson.com/products").then(response =>{
             shortInfo.appendChild(stockofproduct);
 
             productContainer.appendChild(row);
-                product.addEventListener("click", function(){
-                    const productId = data.products[i].id;
+            
+            product.addEventListener("click", function(){
+                const productId = data.products[i].id;
 
-                    localStorage.setItem("productObject",JSON.stringify(data.products[i]));
-                    localStorage.setItem("productId",productId);
-                });
+                localStorage.setItem("productObject",JSON.stringify(data.products[i]));
+                localStorage.setItem("productId",productId);
+            });
+
         }
     }
+    filterContainer.addEventListener("change", function() {
+        const categoryChosen = filterContainer.value;
+        showItems(categoryChosen);
+    });
 }).catch(error => {
     console.error(error);
 })
