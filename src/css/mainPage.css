@@ -118,6 +118,15 @@ div.pageNumber{
     background-color: aqua;
     border: 0.5px solid black;
 }
+div.pageNumber:hover{
+    background-color: aquamarine;
+    cursor: pointer;
+}
 span.pageText{
     font-size: 50px;
+}
+
+div.wholeContent{
+    display: flex;
+    flex-direction: column;
 }

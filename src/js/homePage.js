@@ -32,6 +32,14 @@ fetch("https://dummyjson.com/products").then(response =>{
 
     const paginationSection = document.getElementById("paginationSection");
 
+    const pageNumberContainer = document.querySelectorAll(".pageNumber");
+
+    if(pageNumberContainer.length != 0){
+        pageNumberContainer.forEach(function(element){
+            element.remove();
+        });
+    }
+
     if(container.length != 0){
         container.forEach(function(element){
             element.remove();
@@ -50,16 +58,17 @@ fetch("https://dummyjson.com/products").then(response =>{
         }
 
         //when should we stop showing items
-        if(cnt / 10 >= pageNumber){
+        if(cnt % (pageNumber*10) == 0 && cnt != 0){
             //alert(cnt);
             stopShowingItems = false;
         }
 
+        
 
         if(itemProperty == "allItems" || data.products[i].title.toLowerCase() == itemProperty.toLowerCase() || data.products[i].description.toLowerCase() == itemProperty.toLowerCase() || data.products[i].category.toLowerCase() == itemProperty.toLowerCase()){
-            //alert(cnt + " " + (pageNumber * 10));
+            //alert(cnt + " " + (pageNumber * 10) + " " + stopShowingItems + " " + (cnt >= (pageNumber * 10 - 10) + " " + cnt < (pageNumber * 10)));
             if(stopShowingItems && (cnt >= (pageNumber * 10 - 10) && cnt < (pageNumber * 10))){
-                //alert(cnt);
+                //alert("cnt");
                 const product = document.createElement("div");
                 product.classList.add("product");
 
@@ -161,8 +170,10 @@ fetch("https://dummyjson.com/products").then(response =>{
         paginationSection.appendChild(pageN);
 
         pageN.addEventListener("click", function(){
-            pageNumber = pageNT;
-            //showItems(itemProperty);
+            pageNumber = parseInt(pageNT.textContent);
+            alert(pageNumber);
+            itemProperty = "allItems";
+            showItems(itemProperty);
         });
     }
 
