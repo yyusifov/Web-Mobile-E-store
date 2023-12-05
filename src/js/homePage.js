@@ -59,16 +59,13 @@ fetch("https://dummyjson.com/products?skip=0&limit=100").then(response =>{
             row.classList.add("row");
         }
 
-        //when should we stop showing items
         if(cnt % (pageNumber*10) == 0 && cnt != 0){
-            //alert(cnt);
             stopShowingItems = false;
         }
 
         
 
         if(itemProperty == "allItems" || data.products[i].title.toLowerCase().includes(itemProperty.toLowerCase()) || data.products[i].description.toLowerCase().includes(itemProperty.toLowerCase()) || data.products[i].category.toLowerCase().includes(itemProperty.toLowerCase())){
-            //alert(cnt + " " + (pageNumber * 10) + " " + stopShowingItems + " " + (cnt >= (pageNumber * 10 - 10) + " " + cnt < (pageNumber * 10)));
             if(stopShowingItems && (cnt >= (pageNumber * 10 - 10) && cnt < (pageNumber * 10))){
                 rownumberdefiner++;
                 const product = document.createElement("div");
@@ -139,7 +136,6 @@ fetch("https://dummyjson.com/products?skip=0&limit=100").then(response =>{
                     localStorage.setItem("productId",productId);
                 });
             }
-            //Filter containera bax
             if(!categoryList.includes(data.products[i].category)){
                 const categoryElement = document.createElement("option");
                 categoryElement.value = data.products[i].category;
@@ -156,7 +152,6 @@ fetch("https://dummyjson.com/products?skip=0&limit=100").then(response =>{
         itemProperty = categoryChosen;
         pageNumber = 1;
         showItems(itemProperty);
-        //alert(itemProperty);
     });
 
     totalPageNumber = Math.ceil(cnt / 10);
@@ -177,15 +172,13 @@ fetch("https://dummyjson.com/products?skip=0&limit=100").then(response =>{
 
         pageN.addEventListener("click", function(){
             pageNumber = parseInt(pageNT.textContent);
-            //alert(pageNumber);
-            //itemProperty = "allItems";
+
             showItems(itemProperty);
         });
     }
 
         var searchIcon = document.getElementById('searchIcon');
         searchIcon.addEventListener("click", function(){
-            //alert(itemProperty);
             let iProperty = document.getElementById("searchKeyword").value;
             if(!(iProperty.trim() === itemProperty.trim())){
                 itemProperty = iProperty;

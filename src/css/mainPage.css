@@ -118,8 +118,8 @@ div.pagination{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 40px;
+    padding-top: 2.5vw;
+    padding-bottom: 2vw;
 }
 div#paginationSection{
     display: flex;
@@ -132,7 +132,7 @@ div.pageNumber{
     align-items: center;
     background-color: #80e0ab;
     border: 0.2px solid black;
-    width: 50px;
+    width: 2.5vw;
 }
 div.pageNumber:hover{
     background-color: aquamarine;

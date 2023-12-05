@@ -20,9 +20,9 @@ div.navBar{
 }
 div#sectionFrame{
     background-color: #80e0ab;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-bottom: 0.5vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
     display: flex;
     flex-direction: row;
     border-radius: 5px;
@@ -48,12 +48,12 @@ a#backLink{
     width: 100%;
 }
 div.mainContent{
-    padding-top: 40px;
+    padding-top: 2vw;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding-left: 50px;
-    column-gap: 100px;
+    padding-left: 2.5vw;
+    column-gap: 2.5vw;
 }
 
 div.productGallery{
@@ -88,16 +88,20 @@ div.directionofimagechoice{
 
 div#leftChoice{
     position: absolute;
-    left:10px;
-    bottom: 300px;
+    left:0.5vw;
+    bottom: 15vw;
 }
-
+div#leftChoice:hover{
+    cursor: pointer;
+}
 div#rightChoice{
     position: absolute;
-    right:10px;
-    bottom: 300px;
+    right:0.5vw;
+    bottom: 15vw;
 }
-
+div#rightChoice{
+    cursor: pointer;
+}
 div.iconContainer{
     display: flex;
     flex-direction: column;
@@ -112,9 +116,10 @@ div.productInformation{
     background-color: #80e0ab;
     display: flex;
     flex-direction: column;
-    row-gap: 15px;
-    padding: 20px;
+    row-gap: 0.75vw;
+    padding: 1vw;
     border-radius: 10px;
+    height: auto;
 }
 div.productDetails{
     display: flex;
