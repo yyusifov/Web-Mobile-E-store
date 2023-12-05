@@ -6,6 +6,20 @@ var product = JSON.parse(getProduct);
 
 document.getElementById("imageofproduct").src = product.images[0];
 
+document.getElementById("productTitle").textContent = product.title;
+
+document.getElementById("productBrand").textContent = "Brand: " + product.brand;
+
+document.getElementById("productCategory").textContent = "Category: " + product.category;
+
+document.getElementById("productPrice").textContent = "Price: " + product.price;
+
+document.getElementById("productDiscount").textContent = "Discount: " + product.discountPercentage + "%";
+
+document.getElementById("productStock").textContent = "Stock: " + product.stock;
+
+document.getElementById("productDescription").textContent = "Description: " + product.description;
+
 var cnt = 0;
 function imageFromLeft(){
     if(cnt > 0){

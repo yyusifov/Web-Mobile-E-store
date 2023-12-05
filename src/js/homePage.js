@@ -5,6 +5,7 @@ var itemList = [];
 var pageNumber = 1;
 
 var totalPageNumber = 0;
+
 //Default value
 var itemProperty = "allItems";
 //When the whole page is loaded, we can call showItems function to demonstrate items
@@ -13,12 +14,14 @@ window.onload = function(){
 };
 
 function showItems(itemProperty){
-fetch("https://dummyjson.com/products").then(response =>{
+fetch("https://dummyjson.com/products?skip=0&limit=100").then(response =>{
     if(response.ok == false){
         throw new Error("status code is not in wanted range");
     }
     return response.json();
 }).then(data =>{
+
+    var rownumberdefiner = 0;
 
     if(itemProperty.trim().length == 0){
         itemProperty = "allItems";
@@ -51,8 +54,7 @@ fetch("https://dummyjson.com/products").then(response =>{
     const filterContainer = document.getElementById("categoryFilter");
     for(let i = 0; i < data.products.length; i++){
 
-        
-        if(cnt % 4 == 0){
+        if(rownumberdefiner % 4 == 0){
             var row = document.createElement("div");
             row.classList.add("row");
         }
@@ -65,10 +67,10 @@ fetch("https://dummyjson.com/products").then(response =>{
 
         
 
-        if(itemProperty == "allItems" || data.products[i].title.toLowerCase() == itemProperty.toLowerCase() || data.products[i].description.toLowerCase() == itemProperty.toLowerCase() || data.products[i].category.toLowerCase() == itemProperty.toLowerCase()){
+        if(itemProperty == "allItems" || data.products[i].title.toLowerCase().includes(itemProperty.toLowerCase()) || data.products[i].description.toLowerCase().includes(itemProperty.toLowerCase()) || data.products[i].category.toLowerCase().includes(itemProperty.toLowerCase())){
             //alert(cnt + " " + (pageNumber * 10) + " " + stopShowingItems + " " + (cnt >= (pageNumber * 10 - 10) + " " + cnt < (pageNumber * 10)));
             if(stopShowingItems && (cnt >= (pageNumber * 10 - 10) && cnt < (pageNumber * 10))){
-                //alert("cnt");
+                rownumberdefiner++;
                 const product = document.createElement("div");
                 product.classList.add("product");
 
@@ -81,7 +83,7 @@ fetch("https://dummyjson.com/products").then(response =>{
                 const shortInfo = document.createElement("div");
                 shortInfo.classList.add("shortInfo");
 
-                const productName = document.createElement("div");
+                const productName = document.createElement("span");
                 productName.classList.add("productName");
                 productName.textContent = data.products[i].title;
 
@@ -92,7 +94,7 @@ fetch("https://dummyjson.com/products").then(response =>{
 
                 const productDiscount = document.createElement("span");
                 productDiscount.classList.add("productDiscount");
-                productDiscount.textContent = data.products[i].discountPercentage + "%";
+                productDiscount.textContent = data.products[i].discountPercentage + "% Discount!";
 
                 const categoryofproduct = document.createElement("span");
                 categoryofproduct.classList.add("categoryofproduct");
@@ -104,7 +106,7 @@ fetch("https://dummyjson.com/products").then(response =>{
 
                 const stockofproduct = document.createElement("span");
                 stockofproduct.classList.add("stockofproduct");
-                stockofproduct.textContent = data.products[i].stock;
+                stockofproduct.textContent = "Stock: " + data.products[i].stock;
 
 
 
@@ -125,6 +127,8 @@ fetch("https://dummyjson.com/products").then(response =>{
                 shortInfo.appendChild(productDiscount);
                 
                 shortInfo.appendChild(stockofproduct);
+
+                shortInfo.appendChild(categoryofproduct);
 
                 productContainer.appendChild(row);
                 
@@ -150,7 +154,9 @@ fetch("https://dummyjson.com/products").then(response =>{
     filterContainer.addEventListener("change", function() {
         const categoryChosen = filterContainer.value;
         itemProperty = categoryChosen;
+        pageNumber = 1;
         showItems(itemProperty);
+        //alert(itemProperty);
     });
 
     totalPageNumber = Math.ceil(cnt / 10);
@@ -171,19 +177,24 @@ fetch("https://dummyjson.com/products").then(response =>{
 
         pageN.addEventListener("click", function(){
             pageNumber = parseInt(pageNT.textContent);
-            alert(pageNumber);
-            itemProperty = "allItems";
+            //alert(pageNumber);
+            //itemProperty = "allItems";
             showItems(itemProperty);
         });
     }
 
+        var searchIcon = document.getElementById('searchIcon');
+        searchIcon.addEventListener("click", function(){
+            //alert(itemProperty);
+            let iProperty = document.getElementById("searchKeyword").value;
+            if(!(iProperty.trim() === itemProperty.trim())){
+                itemProperty = iProperty;
+                pageNumber = 1;
+                showItems(itemProperty.trim());
+            }
+        });
+
 }).catch(error => {
     console.error(error);
 })
-}
-
-
-function searchItem(){
-    itemProperty = document.getElementById("searchKeyword").value;
-    showItems(itemProperty.trim());
 }
