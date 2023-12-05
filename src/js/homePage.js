@@ -99,7 +99,7 @@ fetch("https://dummyjson.com/products?skip=0&limit=100").then(response =>{
 
                 const linktonexthtml = document.createElement("a");
                 linktonexthtml.classList.add("nextHtml");
-                linktonexthtml.href = "productInfo.html";
+                linktonexthtml.href = "public/productInfo.html";
 
                 const stockofproduct = document.createElement("span");
                 stockofproduct.classList.add("stockofproduct");
